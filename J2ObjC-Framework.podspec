@@ -1,4 +1,4 @@
-@version = "1.2"
+@version = "1.3.1"
 
 Pod::Spec.new do |s|
   s.name         		= "J2ObjC-Framework"
@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage        = "https://actor.im/"
   s.license         = { :type => 'MIT', :file => 'LICENSE' }
   s.author       		= { "Actor LLC" => "steve@actor.im" }
-  s.source          = { :git => "https://github.com/Daeda88/J2ObjC-Framework.git", :tag => "v#{s.version}" }
+  s.source          = { :git => "https://github.com/jaspervp/J2ObjC-Framework.git", :tag => "v#{s.version}" }
 
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.11"
@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
   CMD
 
   s.preserve_paths = ['Frameworks/j2objc.framework', 'Distributive', 'install.sh']
-  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/J2ObjC-Framework/Frameworks"' }  
-  
+  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/J2ObjC-Framework/Frameworks"' }
+
 end
