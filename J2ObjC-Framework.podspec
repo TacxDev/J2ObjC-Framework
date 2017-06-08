@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.requires_arc 		= true
 
   s.frameworks      = 'Security'
-  s.libraries       = 'icucore', 'z'
+  s.libraries       = 'icucore', 'z', 'iconv'
 
   s.prepare_command = <<-CMD
       Scripts/download.sh
