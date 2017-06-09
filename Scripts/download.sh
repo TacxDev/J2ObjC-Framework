@@ -8,7 +8,7 @@ echo "fetching j2objc dist"
 echo "fetching j2objc"
  for i in {1..5}
     do
-        curl --range 0-199999999 -o j2objc-${j2objc_version}.zip.part1 -L  ${link}
+        curl --range 0-99999999 -o j2objc-${j2objc_version}.zip.part1 -L  ${link}
         status=$?
         if [ "$status" -eq 0 ]; then
             break
@@ -16,14 +16,14 @@ echo "fetching j2objc"
     done
     for i in {1..5}
     do
-        curl --range 200000000-399999999 -o j2objc-${j2objc_version}.zip.part2 -L ${link}
+        curl --range 100000000-199999999 -o j2objc-${j2objc_version}.zip.part2 -L ${link}
         if [ "$status" -eq 0 ]; then
             break
         fi
     done
     for i in {1..5}
     do
-       curl --range 400000000-599999999 -o j2objc-${j2objc_version}.zip.part3 -L ${link}
+       curl --range 200000000-299999999 -o j2objc-${j2objc_version}.zip.part3 -L ${link}
        status=$?
        if [ "$status" -eq 0 ]; then
           break
@@ -31,7 +31,7 @@ echo "fetching j2objc"
     done
     for i in {1..5}
     do
-       curl --range 600000000-799999999 -o j2objc-${j2objc_version}.zip.part4 -L ${link}
+       curl --range 300000000-399999999 -o j2objc-${j2objc_version}.zip.part4 -L ${link}
        status=$?
        if [ "$status" -eq 0 ]; then
           break
@@ -39,7 +39,7 @@ echo "fetching j2objc"
     done
     for i in {1..5}
     do
-       curl --range 800000000-999999999 -o j2objc-${j2objc_version}.zip.part5 -L ${link}
+       curl --range 400000000-499999999 -o j2objc-${j2objc_version}.zip.part5 -L ${link}
        status=$?
        if [ "$status" -eq 0 ]; then
           break
@@ -47,7 +47,47 @@ echo "fetching j2objc"
     done
     for i in {1..5}
     do
-       curl --range 1000000000- -o j2objc-${j2objc_version}.zip.part6 -L ${link}
+       curl --range 500000000-599999999 -o j2objc-${j2objc_version}.zip.part6 -L ${link}
+       status=$?
+       if [ "$status" -eq 0 ]; then
+          break
+       fi
+    done
+    for i in {1..5}
+    do
+       curl --range 600000000-699999999 -o j2objc-${j2objc_version}.zip.part7 -L ${link}
+       status=$?
+       if [ "$status" -eq 0 ]; then
+          break
+       fi
+    done
+    for i in {1..5}
+    do
+       curl --range 700000000-799999999 -o j2objc-${j2objc_version}.zip.part8 -L ${link}
+       status=$?
+       if [ "$status" -eq 0 ]; then
+          break
+       fi
+    done
+    for i in {1..5}
+    do
+       curl --range 800000000-899999999 -o j2objc-${j2objc_version}.zip.part9 -L ${link}
+       status=$?
+       if [ "$status" -eq 0 ]; then
+          break
+       fi
+    done
+    for i in {1..5}
+    do
+       curl --range 900000000-999999999 -o j2objc-${j2objc_version}.zip.part10 -L ${link}
+       status=$?
+       if [ "$status" -eq 0 ]; then
+          break
+       fi
+    done
+    for i in {1..5}
+    do
+       curl --range 1000000000- -o j2objc-${j2objc_version}.zip.part11 -L ${link}
        status=$?
        if [ "$status" -eq 0 ]; then
           break
