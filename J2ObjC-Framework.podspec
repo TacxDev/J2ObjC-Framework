@@ -11,14 +11,15 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "8.0"
   s.osx.deployment_target = "10.11"
+  s.tvos.deployment_target = "10.1"
   s.requires_arc 		= true
 
   s.frameworks      = 'Security'
   s.libraries       = 'icucore', 'z', 'iconv'
 
-  s.prepare_command = <<-CMD
-      Scripts/download.sh
-  CMD
+#  s.prepare_command = <<-CMD
+#      Scripts/download.sh
+#  CMD
 
   s.preserve_paths = ['Frameworks/j2objc.framework', 'Distributive', 'install.sh']
   s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/J2ObjC-Framework/Frameworks"' }
