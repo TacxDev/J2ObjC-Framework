@@ -4,7 +4,7 @@ set -ev
 GITHUB="api.github.com"
 REPO="TacxDev/J2ObjC-Framework"
 
-TOKEN="42388bb1f169b0af0a18a8ad02388da607e2c2a7"
+TOKEN="1e19cb1f137e779edb17f12234b5f9b9fc6495ed"
 J2OBJC_VERSION=2.2.1
 
 FILE="j2objc-${J2OBJC_VERSION}.zip"
