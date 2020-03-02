@@ -35,8 +35,8 @@ function perform_download {
 
 perform_download
 
-cat j2objc-${J2OBJC_VERSION}.zip.part* > j2objc-${J2OBJC_VERSION}.zip
-rm j2objc-${J2OBJC_VERSION}.zip.part*
+cat ${FILE}.part* > ${FILE}
+rm ${FILE}.part*
 
 echo "j2objc-${J2OBJC_VERSION}.zip" | shasum
 unzip -o -q j2objc-${J2OBJC_VERSION}.zip
