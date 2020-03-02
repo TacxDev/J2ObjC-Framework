@@ -4,7 +4,7 @@ REPO="TacxDev/J2ObjC-Framework"
 J2OBJC_VERSION=2.5
 
 FILE="j2objc-${J2OBJC_VERSION}.zip"
-PART_SIZE="$(( 200 * 1024 * 1024 ))"
+PART_SIZE="$(( 100 * 1024 * 1024 ))"
 NUMBER_OF_PARTS=4
 NUMBER_OF_ATTEMPTS=5
 
@@ -35,8 +35,8 @@ function perform_download {
 
 perform_download
 
-cat j2objc-${J2OBJC_VERSION}.zip.part* > j2objc-${J2OBJC_VERSION}.zip
-rm j2objc-${J2OBJC_VERSION}.zip.part*
+cat ${FILE}.part* > ${FILE}
+rm ${FILE}.part*
 
 echo "j2objc-${J2OBJC_VERSION}.zip" | shasum
 unzip -o -q j2objc-${J2OBJC_VERSION}.zip
