@@ -1,4 +1,4 @@
-@version = "2.5"
+@version = "2.5.5"
 
 Pod::Spec.new do |s|
   s.name = "J2ObjC-Framework"
@@ -9,9 +9,9 @@ Pod::Spec.new do |s|
   s.author = { "Actor LLC" => "steve@actor.im" }
   s.source = { :git => "https://github.com/jaspervp/J2ObjC-Framework.git", :tag => "v#{s.version}" }
 
-  s.ios.deployment_target = "8.0"
-  s.osx.deployment_target = "10.11"
-  s.tvos.deployment_target = "10.1"
+  s.ios.deployment_target = "13.0"
+  s.osx.deployment_target = "10.15"
+  s.tvos.deployment_target = "13.0"
   s.requires_arc = true
 
   s.frameworks = 'Security'
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
       Scripts/download.sh
   CMD
 
-  s.preserve_paths = ['frameworks', 'install.sh']
-  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/J2ObjC-Framework/Frameworks"' }
+  s.preserve_paths = ['install.sh']
+  s.vendored_frameworks = 'J2ObjC.xcframework'
 
 end

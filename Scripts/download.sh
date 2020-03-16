@@ -1,11 +1,11 @@
 #!/bin/bash
 GITHUB="https://github.com"
 REPO="TacxDev/J2ObjC-Framework"
-J2OBJC_VERSION=2.5
+J2OBJC_VERSION=2.5.5
 
 FILE="j2objc-${J2OBJC_VERSION}.zip"
 PART_SIZE="$(( 100 * 1024 * 1024 ))"
-NUMBER_OF_PARTS=4
+NUMBER_OF_PARTS=7
 NUMBER_OF_ATTEMPTS=5
 
 link="${GITHUB}/${REPO}/releases/download/${J2OBJC_VERSION}/${FILE}"
