@@ -21,6 +21,6 @@ Pod::Spec.new do |s|
       Scripts/download.sh
   CMD
 
-  s.vendored_frameworks = 'JRE.xcframework', 'JSR305.xcframework', 'ProtobufRuntime.xcframework'
+  s.vendored_frameworks = 'Frameworks/JRE.xcframework', 'Frameworks/JSR305.xcframework', 'Frameworks/ProtobufRuntime.xcframework'
 
 end
