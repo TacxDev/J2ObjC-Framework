@@ -2,14 +2,15 @@
 
 LIBRARY_NAME="J2ObjC"
 
-FRAMEWORK_FILE="$LIBRARY_NAME.framework"
-XCFRAMEWORK_FILE="$LIBRARY_NAME.xcframework"
-
-J2OBJC_PLATFORMS="ios appletvos macosx maccatalyst"
+# J2OBJC_PLATFORMS="ios appletvos macosx maccatalyst"
+J2OBJC_PLATFORMS="ios macosx maccatalyst"
 FAT_PLATFORMS="ios appletvos"
 LIBRARIES="libandroid_util libguava libguavaandroid libjavax_inject libjre_beans libjre_channels libjre_concurrent libjre_core libjre_emul libjre_icu libjre_io libjre_net libjre_security libjre_sql libjre_ssl libjre_time libjre_util libjre_xml libjre_zip libjsr305 libjunit libmockito libprotobuf_runtime libxalan"
+FRAMEWORKS="Guava GuavaAndroid JavaxInject JRE JSR305 JUnit Mockito ProtobufRuntime Xalan"
 DIST_LIB="dist/lib"
+DIST_FRAMEWORKS="dist/frameworks"
 TMP="dist/tmp"
+XCFRAMEWORK_FOLDER="dist/xcframeworks"
 
 function Architectures() {
     local platform=$1
@@ -42,6 +43,22 @@ function ThinInputPath() {
         appletvos)      echo "$TMP/appletvos/$arch" ;;
         macosx)         echo "$DIST_LIB/macosx" ;;
         maccatalyst)    echo "$DIST_LIB/maccatalyst" ;;
+    esac
+}
+
+function MatchLibrary() {
+    local framework=$1
+
+    case $framework in
+        Guava)              echo "libguava" ;;
+        GuavaAndroid)       echo "libguavaandroid" ;;
+        JavaxInject)        echo "libjavax_inject" ;;
+        JRE)                echo "libjre_emul" ;;
+        JSR305)             echo "libjsr305" ;;
+        JUnit)              echo "libjunit" ;;
+        Mockito)            echo "libmockito" ;;
+        ProtobufRuntime)    echo "libprotobuf_runtime" ;;
+        Xalan)              echo "libxalan" ;;
     esac
 }
 
@@ -79,55 +96,52 @@ function CreateThin() {
 function PackageToFrameworks() {
     local platform=$1
     local arch=$2
+    local framework=$3
     local arch_dir="$(ThinInputPath $platform $arch)"
     local include_dir="dist/include/"
 
-    echo "Packaging library for platform: $platform, arch: $arch"
+    echo "Packaging $framework for platform: $platform, arch: $arch"
 
-    local libraries=""
-
-    for LIBRARY in $LIBRARIES
-    do
-        libraries="$libraries $arch_dir/$LIBRARY.a"
-    done
+    local library="$(MatchLibrary $FRAMEWORK)"
 
     local output_dir="$(FrameworkPath $platform $arch)"
     mkdir -p "$output_dir"
+
+    local framework_path="$DIST_FRAMEWORKS/$framework.framework"
+    cp -R $framework_path $output_dir
     echo "$output_dir"
 
-    local framework_headers="$output_dir/$FRAMEWORK_FILE/Headers"
-    mkdir -p "$framework_headers"
-
-    cp -r $include_dir $framework_headers
-
-    libtool -static -arch_only $arch \
-        -o $output_dir/$FRAMEWORK_FILE/$LIBRARY_NAME $libraries
+    cp $arch_dir/$library.a "$output_dir/$framework.framework/Versions/A/$framework"
 }
 
 function CreateXCFramework() {
-    rm -rf $XCFRAMEWORK_FILE
+    rm -rf $XCFRAMEWORK_FOLDER
+    mkdir -p $XCFRAMEWORK_FOLDER
 
-    echo "Creating framework: $J2OBJC_PLATFORMS"
-
-    local framework_arguments=""
-
-    for J2OBJC_PLATFORM in $J2OBJC_PLATFORMS
+    for FRAMEWORK in $FRAMEWORKS
     do
-        local archs="$(Architectures $J2OBJC_PLATFORM)"
+        echo "Creating framework $FRAMEWORK ($J2OBJC_PLATFORMS)"
 
-        for arch in $archs
+        local framework_arguments=""
+
+        for J2OBJC_PLATFORM in $J2OBJC_PLATFORMS
         do
-            PackageToFrameworks $J2OBJC_PLATFORM $arch
+            local archs="$(Architectures $J2OBJC_PLATFORM)"
 
-            local lib_dir="$(FrameworkPath $J2OBJC_PLATFORM $arch)"
-            framework_arguments="$framework_arguments -framework $lib_dir/$FRAMEWORK_FILE"
+            for arch in $archs
+            do
+                PackageToFrameworks $J2OBJC_PLATFORM $arch $FRAMEWORK
+
+                local lib_dir="$(FrameworkPath $J2OBJC_PLATFORM $arch)"
+                framework_arguments="$framework_arguments -framework $lib_dir/$FRAMEWORK.framework"
+            done
         done
+
+        echo $framework_arguments
+
+        xcodebuild -create-xcframework $framework_arguments \
+            -output "$XCFRAMEWORK_FOLDER/$FRAMEWORK.xcframework"
     done
-
-    echo $framework_arguments
-
-    xcodebuild -create-xcframework $framework_arguments \
-        -output "$XCFRAMEWORK_FILE"
 }
 
 CreateThin

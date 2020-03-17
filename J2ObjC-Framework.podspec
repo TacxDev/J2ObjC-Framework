@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
       Scripts/download.sh
   CMD
 
-  s.preserve_paths = ['install.sh']
-  s.vendored_frameworks = 'J2ObjC.xcframework'
+  s.preserve_paths = ['frameworks', 'install.sh']
+  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/J2ObjC-Framework/Frameworks"' }
 
 end
