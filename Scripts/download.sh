@@ -1,7 +1,7 @@
 #!/bin/bash
 GITHUB="https://github.com"
 REPO="TacxDev/J2ObjC-Framework"
-J2OBJC_VERSION=2.5.5
+J2OBJC_VERSION=2.7
 
 FILE="j2objc-${J2OBJC_VERSION}.zip"
 PART_SIZE="$(( 100 * 1024 * 1024 ))"
