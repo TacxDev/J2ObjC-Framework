@@ -19,10 +19,20 @@ let package = Package(
     products: [
         .library(
             name: "J2ObjC-Framework",
-            targets: ["JRE", "JSR305", "ProtobufRuntime"]),
+            targets: ["J2ObjC_Framework", "JRE", "JSR305", "ProtobufRuntime"]),
     ],
     dependencies: [],
     targets: [
+        .target(
+            name: "J2ObjC_Framework",
+            dependencies: ["JRE", "JSR305", "ProtobufRuntime"],
+            linkerSettings: [
+                .linkedFramework("Security"),
+                .linkedLibrary("z"),
+                .linkedLibrary("icucore"),
+                .linkedLibrary("iconv"),
+            ]
+        ),
         .binaryTarget(
             name: "JRE",
             url: jreLink,
