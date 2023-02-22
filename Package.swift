@@ -26,9 +26,8 @@ let package = Package(
         .target(
             name: "J2ObjC-Framework",
             dependencies: ["JRE", "JSR305", "ProtobufRuntime"],
-            path: "./",
-            exclude: ["./Scripts/build_cxframework", "./Scripts/convert.py", "./Scripts/download", "./install", "./J2ObjC-Framework.podspec", "./LICENSE"],
-            publicHeadersPath: "./Scripts/Template/Headers",
+            path: "./J2ObjC-Framework",
+            publicHeadersPath: nil,
             linkerSettings: [
                 .linkedFramework("Security"),
                 .linkedLibrary("z"),
