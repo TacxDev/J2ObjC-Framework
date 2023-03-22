@@ -18,14 +18,18 @@ let package = Package(
     name: "J2ObjC-Framework",
     products: [
         .library(
-            name: "J2ObjC-Framework",
-            targets: ["J2ObjC-Framework", "JRE", "JSR305", "ProtobufRuntime"]),
+            name: "J2ObjC-Framework", targets: ["J2ObjC-Framework"]
+        ),
     ],
     dependencies: [],
     targets: [
         .target(
             name: "J2ObjC-Framework",
-            dependencies: ["JRE", "JSR305", "ProtobufRuntime"],
+            dependencies: [
+                .target(name: "JRE"),
+                .target(name: "JSR305"),
+                .target(name: "ProtobufRuntime")
+            ],
             path: "./J2ObjC-Framework",
             publicHeadersPath: nil,
             linkerSettings: [
