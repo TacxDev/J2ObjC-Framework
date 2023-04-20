@@ -17,21 +17,48 @@ private let protobufLink = "\(baseLink)ProtobufRuntime.xcframework.zip"
 let package = Package(
     name: "J2ObjC-Framework",
     products: [
-        .library(
-            name: "J2ObjC-Framework", targets: ["J2ObjC-Framework"]
-        ),
+        //        .library(
+        //            name: "J2ObjC-Framework", targets: ["J2ObjC-Framework"]
+        //        ),
+        
+        .library(name: "JRE", targets: ["JREWrapper"]),
+        .library(name: "JSR305", targets: ["JSR305Wrapper"]),
+        .library(name: "ProtobufRuntime", targets: ["ProtobufRuntimeWrapper"]),
     ],
     dependencies: [],
     targets: [
+        //        .target(
+        //            name: "J2ObjC-Framework",
+        //            dependencies: [
+        //                .target(name: "JRE"),
+        //                .target(name: "JSR305"),
+        //                .target(name: "ProtobufRuntime")
+        //            ],
+        //            path: "./J2ObjC-Framework",
+        //            publicHeadersPath: nil,
+        //            cSettings: [
+        //                .headerSearchPath("./libs/JRE.xcframework/ios-x86_64-simulator/JRE.framework/Headers"),
+        //                .headerSearchPath("./libs/JSR305.xcframework/ios-x86_64-simulator/JSR305.framework/Headers"),
+        //                .headerSearchPath("./libs/ProtobufRuntime.xcframework/ios-x86_64-simulator/ProtobufRuntime.framework/Headers"),
+        //            ],
+        //            linkerSettings: [
+        //                .linkedFramework("Security"),
+        //                .linkedLibrary("z"),
+        //                .linkedLibrary("icucore"),
+        //                .linkedLibrary("iconv"),
+        //            ]
+        //        ),
+        
         .target(
-            name: "J2ObjC-Framework",
+            name: "JREWrapper",
             dependencies: [
                 .target(name: "JRE"),
-                .target(name: "JSR305"),
-                .target(name: "ProtobufRuntime")
             ],
-            path: "./J2ObjC-Framework",
+            path: "./JRE",
             publicHeadersPath: nil,
+            //            cSettings: [
+            //                .headerSearchPath("./libs/JRE.xcframework/Headers"),
+            //            ],
             linkerSettings: [
                 .linkedFramework("Security"),
                 .linkedLibrary("z"),
@@ -39,11 +66,46 @@ let package = Package(
                 .linkedLibrary("iconv"),
             ]
         ),
-        .binaryTarget(
-            name: "JRE",
-            url: jreLink,
-            checksum: "5564963bbd9393e3f89b2d407625d7f2c22252e21ab30cc34ad8170d62470393"
+        .target(
+            name: "JSR305Wrapper",
+            dependencies: [
+                .target(name: "JSR305"),
+            ],
+            path: "./JSR305",
+            publicHeadersPath: nil,
+            //            cSettings: [
+            //                .headerSearchPath("./libs/JSR305.xcframework/Headers"),
+            //            ],
+            linkerSettings: [
+                .linkedFramework("Security"),
+                .linkedLibrary("z"),
+                .linkedLibrary("icucore"),
+                .linkedLibrary("iconv"),
+            ]
         ),
+        .target(
+            name: "ProtobufRuntimeWrapper",
+            dependencies: [
+                .target(name: "ProtobufRuntime"),
+            ],
+            path: "./ProtobufRuntime",
+            publicHeadersPath: nil,
+            //            cSettings: [
+            //                .headerSearchPath("./libs/ProtobufRuntime.xcframework/Headers"),
+            //            ],
+            linkerSettings: [
+                .linkedFramework("Security"),
+                .linkedLibrary("z"),
+                .linkedLibrary("icucore"),
+                .linkedLibrary("iconv"),
+            ]
+        ),
+        
+            .binaryTarget(
+                name: "JRE",
+                url: jreLink,
+                checksum: "5564963bbd9393e3f89b2d407625d7f2c22252e21ab30cc34ad8170d62470393"
+            ),
         .binaryTarget(
             name: "JSR305",
             url: jsrLink,
@@ -54,5 +116,15 @@ let package = Package(
             url: protobufLink,
             checksum: "bcde9341fa9f30068d2e2cb0240e2bb515ff4b5a28369708b6272f4a3d94b435"
         ),
+        
+        //        .binaryTarget(
+        //            name: "JRE", path: "./libs/JRE.xcframework"
+        //        ),
+        //        .binaryTarget(
+        //            name: "JSR305", path: "./libs/JSR305.xcframework"
+        //        ),
+        //        .binaryTarget(
+        //            name: "ProtobufRuntime", path: "./libs/ProtobufRuntime.xcframework"
+        //        ),
     ]
 )
