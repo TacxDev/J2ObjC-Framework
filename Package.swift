@@ -5,7 +5,7 @@ import PackageDescription
 
 private let github = "https://github.com"
 private let repo = "TacxDev/J2ObjC-Framework"
-private let version = "2.6"
+private let version = "2.5.7"
 
 private let baseLink = "\(github)/\(repo)/releases/download/\(version)/"
 private let jreLink = "\(baseLink)JRE.xcframework.zip"
@@ -58,17 +58,17 @@ let package = Package(
         .binaryTarget(
             name: "JRE",
             url: jreLink,
-            checksum: "a58a98e145d7ba6e8286202dd4750fe6d6b1a6872178dc73e8be095afd39c428"
+            checksum: "b0b3cc7f22b9aca627eb5fbb165bbbcf88d7663fff59228bf39a4e176b6e9396"
         ),
         .binaryTarget(
             name: "JSR305",
             url: jsrLink,
-            checksum: "72267377a339717a15473ab32efc0143da2ee7ee51d9d513913d406e1be446e4"
+            checksum: "f2854f136f9494f076ddcfb869c468020bcb3f15c584636a57a67c7e87032962"
         ),
         .binaryTarget(
             name: "ProtobufRuntime",
             url: protobufLink,
-            checksum: "18b4beca2c583f6a143b845e054573d58d8575339d432e2b5a2c7d71411969ec"
+            checksum: "e46278d8af0efbb31b2686c90e763259abe56c987283563537ea3c550a46b905"
         )
     ]
 )
