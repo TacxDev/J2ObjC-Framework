@@ -27,7 +27,7 @@ let package = Package(
         .library(name: "JRE", targets: ["JREWrapper"]),
         .library(name: "JSR305", targets: ["JSR305Wrapper"]),
         .library(name: "ProtobufRuntime", targets: ["ProtobufRuntimeWrapper"]),
-        .library(name: "JSON", targets: ["JSONWrapper"]),
+//        .library(name: "JSON", targets: ["JSONWrapper"]),
     ],
     dependencies: [],
     targets: [
@@ -57,33 +57,33 @@ let package = Package(
             cxxSettings: cxxSetting,
             linkerSettings: lSetting
         ),
-        .target(
-            name: "JSONWrapper",
-            dependencies: [.target(name: "JSON"),],
-            path: "./JSON",
-            publicHeadersPath: nil,
-            cxxSettings: cxxSetting,
-            linkerSettings: lSetting
-        ),
+//        .target(
+//            name: "JSONWrapper",
+//            dependencies: [.target(name: "JSON"),],
+//            path: "./JSON",
+//            publicHeadersPath: nil,
+//            cxxSettings: cxxSetting,
+//            linkerSettings: lSetting
+//        ),
         .binaryTarget(
             name: "JRE",
             url: jreLink,
-            checksum: "a0ea7c044c6d55791ae321902c96dbc134b66b379d4f64b45d594c19c1560cb6"
+            checksum: "95d77aadc44addfdf7460628ae4ca30b258e985a164448778e2aac885eb40bef"
         ),
         .binaryTarget(
             name: "JSR305",
             url: jsrLink,
-            checksum: "2496d6008c61fef28851f3853e04bcddb924a479ce10f696bbd0920fac50b888"
+            checksum: "acaf9ad995bc38d19ed467041f0d361365ea116e5718a6897f8922f3d0f2f164"
         ),
         .binaryTarget(
             name: "ProtobufRuntime",
             url: protobufLink,
-            checksum: "1877a58f78ea5480a4cf850f544b3fc9c30ce255249b1af2e060b8d0536f3a91"
+            checksum: "8d3bd40a70efdf9bc47e245726af29467e780d3591fb16eafdf64ea1e297aa34"
         ),
-        .binaryTarget(
-            name: "JSON",
-            url: jsonLink,
-            checksum: "ab4f5ea978f5d2e96863808d7b704f34270b1cd5ffaebda76c8c48a60531ba9c"
-        )
+//        .binaryTarget(
+//            name: "JSON",
+//            url: jsonLink,
+//            checksum: "0ec6b51a0898f1b7592e978256d41acc987a6a88e7ca8e7b07be732aad0f10a5"
+//        )
     ]
 )
