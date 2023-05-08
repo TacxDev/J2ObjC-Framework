@@ -27,7 +27,7 @@ let package = Package(
         .library(name: "JRE", targets: ["JREWrapper"]),
         .library(name: "JSR305", targets: ["JSR305Wrapper"]),
         .library(name: "ProtobufRuntime", targets: ["ProtobufRuntimeWrapper"]),
-//        .library(name: "JSON", targets: ["JSONWrapper"]),
+        .library(name: "JSON", targets: ["JSONWrapper"]),
     ],
     dependencies: [],
     targets: [
@@ -57,14 +57,14 @@ let package = Package(
             cxxSettings: cxxSetting,
             linkerSettings: lSetting
         ),
-//        .target(
-//            name: "JSONWrapper",
-//            dependencies: [.target(name: "JSON"),],
-//            path: "./JSON",
-//            publicHeadersPath: nil,
-//            cxxSettings: cxxSetting,
-//            linkerSettings: lSetting
-//        ),
+        .target(
+            name: "JSONWrapper",
+            dependencies: [.target(name: "JSON"),],
+            path: "./JSON",
+            publicHeadersPath: nil,
+            cxxSettings: cxxSetting,
+            linkerSettings: lSetting
+        ),
         .binaryTarget(
             name: "JRE",
             url: jreLink,
@@ -80,10 +80,10 @@ let package = Package(
             url: protobufLink,
             checksum: "8d3bd40a70efdf9bc47e245726af29467e780d3591fb16eafdf64ea1e297aa34"
         ),
-//        .binaryTarget(
-//            name: "JSON",
-//            url: jsonLink,
-//            checksum: "0ec6b51a0898f1b7592e978256d41acc987a6a88e7ca8e7b07be732aad0f10a5"
-//        )
+        .binaryTarget(
+            name: "JSON",
+            url: jsonLink,
+            checksum: "9735a2779c0bab909e5530af89fff9e2ec05f6c751a144046d696b1d9bb4bb6c"
+        )
     ]
 )
