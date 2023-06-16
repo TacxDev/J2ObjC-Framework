@@ -1,20 +1,17 @@
 #!/bin/bash
 GITHUB="https://github.com"
 REPO="TacxDev/J2ObjC-Framework"
-J2OBJC_VERSION=2.5.6
+J2OBJC_VERSION=140623
 
-FILE="j2objc-${J2OBJC_VERSION}.zip"
+FILES=("JRE" "JSON" "JSR305" "ProtobufRuntime")
 PART_SIZE="$(( 100 * 1024 * 1024 ))"
-NUMBER_OF_PARTS=7
+NUMBER_OF_PARTS=3
 NUMBER_OF_ATTEMPTS=5
 
-link="${GITHUB}/${REPO}/releases/download/${J2OBJC_VERSION}/${FILE}"
-
-echo "fetching j2objc dist"
-echo "fetching j2objc"
-
 function perform_download {
-    part_name_format="${FILE}.part%02d"
+    LINK="${GITHUB}/${REPO}/releases/download/${J2OBJC_VERSION}/$1"
+    echo "Fetching xcframework $LINK"
+    part_name_format="${1}.part%02d"
 
     for (( part=1; part<=$NUMBER_OF_PARTS; part++ )); do
         for (( attempt=1; attempt<=$NUMBER_OF_ATTEMPTS; attempt++ )); do
@@ -24,7 +21,7 @@ function perform_download {
 
             echo "part name: ${part_name}"
 
-            curl --range $start-$end -o ${part_name} -L ${link}
+            curl --range $start-$end -o ${part_name} -L $LINK
             status=$?
             if [ "$status" -eq 0 ]; then
                 break
@@ -33,11 +30,14 @@ function perform_download {
     done
 }
 
-perform_download
+mkdir Frameworks
 
-cat ${FILE}.part* > ${FILE}
-rm ${FILE}.part*
+for f in ${FILES[@]}; do
+    ARTIFACT=${f}.xcframework.zip
+    perform_download $ARTIFACT
+    cat ${ARTIFACT}.part* > ${ARTIFACT}
+    rm ${ARTIFACT}.part*
+    unzip -o -q $ARTIFACT -d Frameworks
+    rm $ARTIFACT
+done
 
-echo "j2objc-${J2OBJC_VERSION}.zip" | shasum
-unzip -o -q j2objc-${J2OBJC_VERSION}.zip
-rm j2objc-${J2OBJC_VERSION}.zip
