@@ -1,12 +1,4 @@
 # J2ObjC-Framework
-Frameworked version of j2objc library from Google. This is frameworked + cocoapod version that allows you easily include j2objc to your project.
+This project allows for easy integration of J2ObjC xcframeworks via CocoaPods.
+The frameworks are not part of this repository, but rather are downloaded as binary artifacts that supplement this repository.
 
-Unfortunatelly, this library doesn't compatable with original one in terms that there are different include paths in generated sources.
-
-All inlcude/import with quotes was replaced with andgled/frameworked version.
-
-## Notice
-
-The `SEVERITY_ERROR` property has been renamed to `SEVERITY_ERROR_TACX` in header files only.
-
-If we need to access it, we'll need to recompile the binary as well.
