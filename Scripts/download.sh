@@ -1,7 +1,7 @@
 #!/bin/bash
 GITHUB="https://github.com"
 REPO="TacxDev/J2ObjC-Framework"
-J2OBJC_VERSION=140623
+J2OBJC_VERSION=200623
 
 FILES=("JRE" "JSON" "JSR305" "ProtobufRuntime")
 PART_SIZE="$(( 100 * 1024 * 1024 ))"
