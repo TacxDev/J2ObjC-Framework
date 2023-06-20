@@ -21,6 +21,8 @@ Pod::Spec.new do |s|
       Scripts/download.sh
   CMD
 
+  s.source_files = "Include/**/*.{h}"
+  s.public_header_files = 'Include/JRE/**/*.{h}', 'Include/JSR305/**/*.{h}', 'Include/ProtobufRuntime/**/*.{h}', 'Include/JSON/**/*.{h}'
   s.vendored_frameworks = 'Frameworks/JRE.xcframework', 'Frameworks/JSR305.xcframework', 'Frameworks/ProtobufRuntime.xcframework', 'Frameworks/JSON.xcframework'
 
 end
