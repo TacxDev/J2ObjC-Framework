@@ -23,10 +23,10 @@ Pod::Spec.new do |s|
 
   s.preserve_paths = 'Frameworks'
   s.header_dir = 'Include'
-  s.source_files = "{s.header_dir}/**/*.{h}"
-  s.header_mappings_dir = "{s.header_dir}"
+  s.source_files = 'Include/**/*.{h}'
+  s.header_mappings_dir = 'Include'
   s.xcconfig = {
-  	'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC-Framework/{s.header_dir}\""
+  	'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/J2ObjC-Framework/Include"'
   }
   s.vendored_frameworks = 'Frameworks/JRE.xcframework', 'Frameworks/JSR305.xcframework', 'Frameworks/ProtobufRuntime.xcframework', 'Frameworks/JSON.xcframework'
 
