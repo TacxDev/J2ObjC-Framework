@@ -22,9 +22,9 @@ Pod::Spec.new do |s|
   CMD
 
   s.preserve_paths = 'Frameworks'
-  s.header_dir = 'Include'
   s.source_files = 'Include/**/*.{h}'
   s.header_mappings_dir = 'Include'
+  s.public_header_files = 'Include/**/*.{h}'
   s.xcconfig = {
   	'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/J2ObjC-Framework/Include"'
   }
