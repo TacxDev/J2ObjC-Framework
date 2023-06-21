@@ -21,10 +21,13 @@ Pod::Spec.new do |s|
       Scripts/download.sh
   CMD
 
-  s.source_files = "Include/**/*.{h}"
-
+  s.preserve_paths = 'Frameworks'
   s.header_dir = 'Include'
-  s.header_mappings_dir = 'Include'
+  s.source_files = "{s.header_dir}/**/*.{h}"
+  s.header_mappings_dir = "{s.header_dir}"
+  s.xcconfig = {
+  	'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC-Framework/{s.header_dir}\""
+  }
   s.vendored_frameworks = 'Frameworks/JRE.xcframework', 'Frameworks/JSR305.xcframework', 'Frameworks/ProtobufRuntime.xcframework', 'Frameworks/JSON.xcframework'
 
 end
