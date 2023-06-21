@@ -22,7 +22,8 @@ Pod::Spec.new do |s|
   CMD
 
   s.source_files = "Include/**/*.{h}"
-  s.public_header_files = 'Include/**/*.{h}'
+
+  s.header_dir = 'Include'
   s.header_mappings_dir = 'Include'
   s.vendored_frameworks = 'Frameworks/JRE.xcframework', 'Frameworks/JSR305.xcframework', 'Frameworks/ProtobufRuntime.xcframework', 'Frameworks/JSON.xcframework'
 
