@@ -25,10 +25,6 @@ Pod::Spec.new do |s|
   s.source_files = 'Include/**/*.{h}'
   s.header_mappings_dir = 'Include'
   s.public_header_files = 'Include/**/*.{h}'
-  s.xcconfig = {
-	'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES'=> 'YES',
-  	'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/J2ObjC-Framework/Include"'
-  }
   s.vendored_frameworks = 'Frameworks/JRE.xcframework', 'Frameworks/JSR305.xcframework', 'Frameworks/ProtobufRuntime.xcframework', 'Frameworks/JSON.xcframework'
 
 end
