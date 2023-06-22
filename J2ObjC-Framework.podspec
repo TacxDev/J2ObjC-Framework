@@ -1,4 +1,4 @@
-@version = "2.5.6"
+@version = "200623"
 
 Pod::Spec.new do |s|
   s.name = "J2ObjC-Framework"
@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage = "https://actor.im/"
   s.license = { :type => 'MIT', :file => 'LICENSE' }
   s.author = { "Actor LLC" => "steve@actor.im" }
-  s.source = { :git => "https://github.com/jaspervp/J2ObjC-Framework.git", :tag => "v#{s.version}" }
+  s.source = { :git => "https://github.com/TacxDev/J2ObjC-Framework.git", :branch => "v#{s.version}" }
 
   s.ios.deployment_target = "12.0"
   s.osx.deployment_target = "10.15"
@@ -21,6 +21,10 @@ Pod::Spec.new do |s|
       Scripts/download.sh
   CMD
 
-  s.vendored_frameworks = 'Frameworks/JRE.xcframework', 'Frameworks/JSR305.xcframework', 'Frameworks/ProtobufRuntime.xcframework'
+  s.preserve_paths = 'Frameworks'
+  s.source_files = 'Include/**/*.{h}'
+  s.header_mappings_dir = 'Include'
+  s.public_header_files = 'Include/**/*.{h}'
+  s.vendored_frameworks = 'Frameworks/JRE.xcframework', 'Frameworks/JSR305.xcframework', 'Frameworks/ProtobufRuntime.xcframework', 'Frameworks/JSON.xcframework'
 
 end
