@@ -112,7 +112,7 @@ let package = Package(
         ),
         .binaryTarget(
             name: "Mockito",
-            url: junitLink,
+            url: mockitoLink,
             checksum: "744d4919983eb7c2fadf7cec462fee7d923f04729f8789bd491ddcc13b61c8ab"
         )
     ]
