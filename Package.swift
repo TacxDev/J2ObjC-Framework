@@ -13,6 +13,7 @@ private let jsrLink = "\(baseLink)JSR305.xcframework.zip"
 private let protobufLink = "\(baseLink)ProtobufRuntime.xcframework.zip"
 private let jsonLink = "\(baseLink)JSON.xcframework.zip"
 private let junitLink = "\(baseLink)JUnit.xcframework.zip"
+private let mockitoLink = "\(baseLink)Mockito.xcframework.zip"
 
 let cxxSetting: [CXXSetting]? = nil // [.headerSearchPath("./JRE.xcframework/ios-x86_64-simulator/Headers")]
 let lSetting: [LinkerSetting] = [
@@ -30,6 +31,7 @@ let package = Package(
         .library(name: "ProtobufRuntime", targets: ["ProtobufRuntimeWrapper"]),
         .library(name: "JSON", targets: ["JSONWrapper"]),
         .library(name: "JUnit", targets: ["JUnitWrapper"]),
+        .library(name: "Mockito", targets: ["MockitoWrapper"]),
     ],
     dependencies: [],
     targets: [
@@ -75,6 +77,14 @@ let package = Package(
             cxxSettings: cxxSetting,
             linkerSettings: lSetting
         ),
+        .target(
+            name: "MockitoWrapper",
+            dependencies: [.target(name: "Mockito"),],
+            path: "./Mockito",
+            publicHeadersPath: nil,
+            cxxSettings: cxxSetting,
+            linkerSettings: lSetting
+        ),
         .binaryTarget(
             name: "JRE",
             url: jreLink,
@@ -99,6 +109,11 @@ let package = Package(
             name: "JUnit",
             url: junitLink,
             checksum: "9040b06ab2b369fbf78cb2e5ca125c2bfd353802bfeb98e3079f504448c1ed44"
+        ),
+        .binaryTarget(
+            name: "Mockito",
+            url: junitLink,
+            checksum: "744d4919983eb7c2fadf7cec462fee7d923f04729f8789bd491ddcc13b61c8ab"
         )
     ]
 )
