@@ -28,6 +28,7 @@ let package = Package(
         .library(name: "JSR305", targets: ["JSR305Wrapper"]),
         .library(name: "ProtobufRuntime", targets: ["ProtobufRuntimeWrapper"]),
         .library(name: "JSON", targets: ["JSONWrapper"]),
+        .library(name: "JUnit", targets: ["JUnitWrapper"]),
     ],
     dependencies: [],
     targets: [
@@ -65,6 +66,14 @@ let package = Package(
             cxxSettings: cxxSetting,
             linkerSettings: lSetting
         ),
+        .target(
+            name: "JUnitWrapper",
+            dependencies: [.target(name: "JUnit"),],
+            path: "./JUnit",
+            publicHeadersPath: nil,
+            cxxSettings: cxxSetting,
+            linkerSettings: lSetting
+        ),
         .binaryTarget(
             name: "JRE",
             url: jreLink,
@@ -84,6 +93,11 @@ let package = Package(
             name: "JSON",
             url: jsonLink,
             checksum: "9735a2779c0bab909e5530af89fff9e2ec05f6c751a144046d696b1d9bb4bb6c"
+        ),
+        .binaryTarget(
+            name: "JUnit",
+            url: jsonLink,
+            checksum: "9040b06ab2b369fbf78cb2e5ca125c2bfd353802bfeb98e3079f504448c1ed44"
         )
     ]
 )
