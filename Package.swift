@@ -12,6 +12,7 @@ private let jreLink = "\(baseLink)JRE.xcframework.zip"
 private let jsrLink = "\(baseLink)JSR305.xcframework.zip"
 private let protobufLink = "\(baseLink)ProtobufRuntime.xcframework.zip"
 private let jsonLink = "\(baseLink)JSON.xcframework.zip"
+private let junitLink = "\(baseLink)JUnit.xcframework.zip"
 
 let cxxSetting: [CXXSetting]? = nil // [.headerSearchPath("./JRE.xcframework/ios-x86_64-simulator/Headers")]
 let lSetting: [LinkerSetting] = [
@@ -96,7 +97,7 @@ let package = Package(
         ),
         .binaryTarget(
             name: "JUnit",
-            url: jsonLink,
+            url: junitLink,
             checksum: "9040b06ab2b369fbf78cb2e5ca125c2bfd353802bfeb98e3079f504448c1ed44"
         )
     ]
