@@ -88,32 +88,32 @@ let package = Package(
         .binaryTarget(
             name: "JRE",
             url: jreLink,
-            checksum: "95d77aadc44addfdf7460628ae4ca30b258e985a164448778e2aac885eb40bef"
+            checksum: "47e91589ad599b2fea6913e0e6ccd1fae9807893a8fc8f742a44fc5899d75a8f"
         ),
         .binaryTarget(
             name: "JSR305",
             url: jsrLink,
-            checksum: "acaf9ad995bc38d19ed467041f0d361365ea116e5718a6897f8922f3d0f2f164"
+            checksum: "725caffc7fe59113c5ab3d4f9615d084b1d51a0545eb39c53cfdb43481481047"
         ),
         .binaryTarget(
             name: "ProtobufRuntime",
             url: protobufLink,
-            checksum: "8d3bd40a70efdf9bc47e245726af29467e780d3591fb16eafdf64ea1e297aa34"
+            checksum: "236101d602654c518da094f9d58787ee1f57f0673e7a1b85e1c62af862e76329"
         ),
         .binaryTarget(
             name: "JSON",
             url: jsonLink,
-            checksum: "9735a2779c0bab909e5530af89fff9e2ec05f6c751a144046d696b1d9bb4bb6c"
+            checksum: "a254b6ef1b6351bd540b82c30c14e4f6938fdb1168d2b41f192b594375fe71d1"
         ),
         .binaryTarget(
             name: "JUnit",
             url: junitLink,
-            checksum: "9040b06ab2b369fbf78cb2e5ca125c2bfd353802bfeb98e3079f504448c1ed44"
+            checksum: "746f44324baa0bff98dc6dc953ef5194a55a3591c47487668451279464e566ad"
         ),
         .binaryTarget(
             name: "Mockito",
             url: mockitoLink,
-            checksum: "744d4919983eb7c2fadf7cec462fee7d923f04729f8789bd491ddcc13b61c8ab"
+            checksum: "f9beea76e8725d62b086b5fd95dc491ad7cf206b150e007239bad485a3cc6c68"
         )
     ]
 )
