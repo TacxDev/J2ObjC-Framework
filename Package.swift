@@ -5,7 +5,7 @@ import PackageDescription
 
 private let github = "https://github.com"
 private let repo = "TacxDev/J2ObjC-Framework"
-private let version = "2.8"
+private let version = "2.8.2"
 
 private let baseLink = "\(github)/\(repo)/releases/download/\(version)/"
 private let jreLink = "\(baseLink)JRE.xcframework.zip"
