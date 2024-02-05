@@ -88,7 +88,7 @@ let package = Package(
         .binaryTarget(
             name: "JRE",
             url: jreLink,
-            checksum: "50a0d556d8167672b69c32816b1f365fa6f95bfbba32756f64718f46e365f0b7"
+            checksum: "f3fa88b4d4e584be088d296c6035c79b48fe520ecc9684cf873afccb417fec88"
         ),
         .binaryTarget(
             name: "JSR305",
