@@ -5,7 +5,7 @@ import PackageDescription
 
 private let github = "https://github.com"
 private let repo = "TacxDev/J2ObjC-Framework"
-private let version = "24.2.8"
+private let version = "24.3.29"
 
 private let baseLink = "\(github)/\(repo)/releases/download/\(version)/"
 private let jreLink = "\(baseLink)JRE.xcframework.zip"
@@ -88,12 +88,12 @@ let package = Package(
         .binaryTarget(
             name: "JRE",
             url: jreLink,
-            checksum: "f3fa88b4d4e584be088d296c6035c79b48fe520ecc9684cf873afccb417fec88"
+            checksum: "6137e085cd790c19a736632682c8aeea1b49413501eea6b567a19c938cf28b52"
         ),
         .binaryTarget(
             name: "JSR305",
             url: jsrLink,
-            checksum: "1580a81b92db823125f4078a6eade5cb201f05154a0027bd015ab5598c4637fc"
+            checksum: "0e1d55c8511ae4b707dbc900b2ac2d2adec1822e7984668ce1ce320578219c47"
         ),
         .binaryTarget(
             name: "ProtobufRuntime",
@@ -103,17 +103,17 @@ let package = Package(
         .binaryTarget(
             name: "JSON",
             url: jsonLink,
-            checksum: "85978a335cab74c3845796ebfde1b802283c9c21010c2913a98907eb86830aa6"
+            checksum: "d6e407cb49c7bd9975849436c5ae9b3188b273eb962a74369a0a8b3cb3c2682f"
         ),
         .binaryTarget(
             name: "JUnit",
             url: junitLink,
-            checksum: "49dfb7d5bc04a4d63a1f9d19aec02fb865234fd89e75b0db2700507b642cd75e"
+            checksum: "aa4aad2419a30370054caaaa9c810e3cfcfa3f8c5bf673212944a8bf638845d9"
         ),
         .binaryTarget(
             name: "Mockito",
             url: mockitoLink,
-            checksum: "d1a8bd4af5edadf72f1cf07bfbb9fccfeb22a3e3cd43c45a7f7c5ecb1646c765"
+            checksum: "12c5c6af715df54ca2bfe20c3fac03d4440c9610dd6945f9a530e8c12de47564"
         )
     ]
 )
